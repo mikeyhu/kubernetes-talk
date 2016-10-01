@@ -1,6 +1,6 @@
 FROM alpine:3.3
-ADD go-backend /app/
+ADD backend /app/
 
 EXPOSE 9090
 
-CMD "/app/go-backend"
+CMD "/app/backend"
