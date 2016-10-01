@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: node-frontend-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: node-frontend
+    spec:
+      containers:
+      - name: node-frontend
+        image: mikeyhu/k8s-frontend:0.1.0
+        ports:
+        - containerPort: 3000
+        env:
+          - name: SERVICE_ENDPOINT
+            value: http://$(SERVICE_GO_BACKEND_SERVICE_HOST):$(SERVICE_GO_BACKEND_SERVICE_PORT)/message
+  strategy:
+    type: RollingUpdate
