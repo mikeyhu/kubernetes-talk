@@ -2,3 +2,4 @@
 /k8s
 /go/go-backend
 /.idea
+*/node_modules/
