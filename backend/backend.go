@@ -1,18 +1,25 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"log"
+	"encoding/json"
+	"os"
 )
 
-func respondWithMessage(w http.ResponseWriter, r *http.Request) {
-	name := "Welwyn"
-	fmt.Fprintf(w, "Hello %s!", name)
+type Response struct {
+	Message string `json:"message"`
+	Source  string `json:"source"`
+}
+
+func respondWithGreeting(w http.ResponseWriter, r *http.Request) {
+	hostname, _ := os.Hostname()
+	response := &Response{Message: "Hello World!", Source: hostname}
+	json.NewEncoder(w).Encode(response)
 }
 
 func main() {
-	http.HandleFunc("/message", respondWithMessage)
+	http.HandleFunc("/greeting", respondWithGreeting)
 	err := http.ListenAndServe(":9090", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
