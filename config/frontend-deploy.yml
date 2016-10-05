@@ -16,6 +16,4 @@ spec:
         - containerPort: 3000
         env:
           - name: SERVICE_ENDPOINT
-            value: http://$(SERVICE_GO_BACKEND_SERVICE_HOST):$(SERVICE_GO_BACKEND_SERVICE_PORT)/message
-  strategy:
-    type: RollingUpdate
+            value: http://$(GO_BACKEND_SERVICE_SERVICE_HOST):$(GO_BACKEND_SERVICE_SERVICE_PORT)/greeting
