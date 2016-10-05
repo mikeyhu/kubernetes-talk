@@ -14,3 +14,7 @@ spec:
         image: mikeyhu/k8s-backend:0.1.0
         ports:
         - containerPort: 9090
+#
+#  strategy:
+#    type: RollingUpdate
+#  minReadySeconds: 20
