@@ -9,12 +9,12 @@ import (
 
 type Response struct {
 	Message string `json:"message"`
-	Source  string `json:"source"`
+	Backend string `json:"backend"`
 }
 
 func respondWithGreeting(w http.ResponseWriter, r *http.Request) {
 	hostname, _ := os.Hostname()
-	response := &Response{Message: "Hello World!", Source: hostname}
+	response := &Response{Message: "Hello Hatfield!", Backend: hostname}
 	json.NewEncoder(w).Encode(response)
 }
 

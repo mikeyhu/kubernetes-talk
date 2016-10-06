@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: node-frontend-deployment
 spec:
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
@@ -12,6 +12,7 @@ spec:
       containers:
       - name: node-frontend
         image: mikeyhu/k8s-frontend:0.1.0
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         env:

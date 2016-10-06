@@ -14,7 +14,6 @@ app.get('/', function (req, res) {
   if (serviceEndPoint) {
     request(serviceEndPoint, function (error, response, body) {
       if (!error) {
-
         message = JSON.parse(body);
         message.frontend = os.hostname();
         res.send(message);

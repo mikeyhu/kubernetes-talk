@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: go-backend-deployment
 spec:
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
@@ -11,10 +11,11 @@ spec:
     spec:
       containers:
       - name: go-backend
-        image: mikeyhu/k8s-backend:0.1.0
+        image: mikeyhu/k8s-backend:0.2.1
+        imagePullPolicy: Always
         ports:
         - containerPort: 9090
-#
-#  strategy:
-#    type: RollingUpdate
-#  minReadySeconds: 20
+
+  strategy:
+    type: RollingUpdate
+  minReadySeconds: 20
