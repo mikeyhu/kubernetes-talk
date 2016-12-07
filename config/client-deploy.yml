@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dummy-client-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dummy-client
+    spec:
+      containers:
+      - name: dummy-client
+        image: mikeyhu/k8s-dummy-client:0.1.0
+        imagePullPolicy: Always
+  strategy:
+    type: RollingUpdate
+  minReadySeconds: 20
